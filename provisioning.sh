@@ -47,8 +47,8 @@ VAE_MODELS=(
     "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
 )
 
-ESRGAN_MODELS=(
-    
+CLIP_MODELS=(
+    "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
 )
 
 CONTROLNET_MODELS=(
@@ -84,8 +84,8 @@ function provisioning_start() {
         "${WORKSPACE}/storage/stable_diffusion/models/vae" \
         "${VAE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
-        "${ESRGAN_MODELS[@]}"
+        "${WORKSPACE}/storage/stable_diffusion/models/clip" \
+        "${CLIP_MODELS[@]}"
     provisioning_print_end
 }
 
