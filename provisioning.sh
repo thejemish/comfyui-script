@@ -185,11 +185,10 @@ function provisioning_has_valid_hf_token() {
 
 function provisioning_has_valid_civitai_token() {
     [[ -n "$CIVITAI_TOKEN" ]] || return 1
-    # Use a public endpoint to test the token
-    url="https://civitai.com/api/v1/models?limit=1"
+    url="https://civitai.com/api/v1/models?hidden=1&limit=1"
 
     response=$(curl -o /dev/null -s -w "%{http_code}" -X GET "$url" \
-        -H "Authorization: $CIVITAI_TOKEN" \
+        -H "Authorization: Bearer $CIVITAI_TOKEN" \
         -H "Content-Type: application/json")
 
     # Check if the token is valid
@@ -202,17 +201,14 @@ function provisioning_has_valid_civitai_token() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
-    local auth_header=""
-    
     if [[ -n $HF_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
-        auth_header="Authorization: Bearer $HF_TOKEN"
-    elif [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
-        # Civitai uses a different header format - no "Bearer" prefix
-        auth_header="Authorization: $CIVITAI_TOKEN"
+        auth_token="$HF_TOKEN"
+    elif 
+        [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
+        auth_token="$CIVITAI_TOKEN"
     fi
-    
-    if [[ -n $auth_header ]]; then
-        wget --header="$auth_header" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
+    if [[ -n $auth_token ]];then
+        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
     else
         wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
     fi
