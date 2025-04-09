@@ -40,7 +40,7 @@ UNET_MODELS=(
 )
 
 LORA_MODELS=(
-    "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
+    "https://huggingface.co/archanlathiya/main/resolve/main/studiochatgpt-ghibli-v1.safetensors"
 )
 
 VAE_MODELS=(
