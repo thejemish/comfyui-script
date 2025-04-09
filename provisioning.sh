@@ -35,7 +35,40 @@ CHECKPOINT_MODELS=(
     
 )
 
-UNET_MODELS=(
+CLIP_MODELS=(
+    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
+    "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf"
+)
+
+CLIP_VISION_MODELS=(
+    "https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors"
+)
+
+CONFIG_MODELS=(
+    
+)
+
+CONTROLNET_MODELS=(
+    
+)
+
+DIFFUSERS_MODELS=(
+
+)
+
+DIFFUSION_MODELS=(
+
+)
+
+EMBEDDINGS_MODELS=(
+
+)
+
+GLIGEN_MODELS=(
+
+)
+
+HYPERNETWORKS_MODELS=(
 
 )
 
@@ -43,16 +76,32 @@ LORA_MODELS=(
     "https://huggingface.co/archanlathiya/main/resolve/main/studiochatgpt-ghibli-v1.safetensors"
 )
 
+PHOTOMAKER_MODELS=(
+
+)
+
+STYLE_MODELS=(
+    "https://huggingface.co/second-state/FLUX.1-Redux-dev-GGUF/resolve/c7e36ea59a409eaa553b9744b53aa350099d5d51/flux1-redux-dev.safetensors"
+)
+
+TEXT_ENCODERS_MODELS=(
+
+)
+
+UNET_MODELS=(
+    "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q8_0.gguf"
+)
+
+UPSCALE_MODELS=(
+
+)
+
 VAE_MODELS=(
     "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
 )
 
-CLIP_MODELS=(
-    "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
-)
+VAE_APPROX_MODELS=(
 
-CONTROLNET_MODELS=(
-    
 )
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
@@ -68,24 +117,63 @@ function provisioning_start() {
     provisioning_get_apt_packages
     provisioning_get_nodes
     provisioning_get_pip_packages
+    
+    # ComfyUI model directories in exact specified order
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/ckpt" \
+        "/opt/ComfyUI/models/checkpoints" \
         "${CHECKPOINT_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/unet" \
-        "${UNET_MODELS[@]}"
+        "/opt/ComfyUI/models/clip" \
+        "${CLIP_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/lora" \
-        "${LORA_MODELS[@]}"
+        "/opt/ComfyUI/models/clip_vision" \
+        "${CLIP_VISION_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/controlnet" \
+        "/opt/ComfyUI/models/configs" \
+        "${CONFIG_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/controlnet" \
         "${CONTROLNET_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/vae" \
+        "/opt/ComfyUI/models/diffusers" \
+        "${DIFFUSERS_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/diffusion_models" \
+        "${DIFFUSION_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/embeddings" \
+        "${EMBEDDINGS_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/gligen" \
+        "${GLIGEN_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/hypernetworks" \
+        "${HYPERNETWORKS_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/loras" \
+        "${LORA_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/photomaker" \
+        "${PHOTOMAKER_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/style_models" \
+        "${STYLE_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/text_encoders" \
+        "${TEXT_ENCODERS_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/unet" \
+        "${UNET_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/upscale_models" \
+        "${UPSCALE_MODELS[@]}"
+    provisioning_get_models \
+        "/opt/ComfyUI/models/vae" \
         "${VAE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/clip" \
-        "${CLIP_MODELS[@]}"
+        "/opt/ComfyUI/models/vae_approx" \
+        "${VAE_APPROX_MODELS[@]}"
+    
     provisioning_print_end
 }
 
