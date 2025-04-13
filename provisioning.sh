@@ -36,12 +36,11 @@ CHECKPOINT_MODELS=(
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
-    "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf"
+    
 )
 
 CLIP_VISION_MODELS=(
-    "https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors"
+    
 )
 
 CONFIG_MODELS=(
@@ -73,7 +72,7 @@ HYPERNETWORKS_MODELS=(
 )
 
 LORA_MODELS=(
-    "https://huggingface.co/archanlathiya/main/resolve/main/studiochatgpt-ghibli-v1.safetensors"
+    
 )
 
 PHOTOMAKER_MODELS=(
@@ -81,7 +80,7 @@ PHOTOMAKER_MODELS=(
 )
 
 STYLE_MODELS=(
-    "https://huggingface.co/second-state/FLUX.1-Redux-dev-GGUF/resolve/c7e36ea59a409eaa553b9744b53aa350099d5d51/flux1-redux-dev.safetensors"
+    
 )
 
 TEXT_ENCODERS_MODELS=(
@@ -89,7 +88,7 @@ TEXT_ENCODERS_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q8_0.gguf"
+    
 )
 
 UPSCALE_MODELS=(
@@ -97,7 +96,7 @@ UPSCALE_MODELS=(
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
+    
 )
 
 VAE_APPROX_MODELS=(
